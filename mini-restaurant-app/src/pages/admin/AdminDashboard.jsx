@@ -63,7 +63,54 @@ const AdminDashboard = () => {
                     <input name="restaurantName"
                     placeholder="Restaurant Name"
                     value = {formData.restaurantName}
+                    onChange={handleChange}
+                    />
+
+                    <input name = "address"
+                    placeholder="Address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    />
+
+                    <select name = "type" value={formData.type} onChange={handleChange}>
+                        <option value = "">Select Type</option>
+                        <option>Rajasthan</option>
+                        <option>Gujarati</option>
+                        <option>Mughlai</option>
+                        <option>Jain</option>
+                        <option>Thai</option>
+                        <option>North Indian</option>
+                        <option>South India</option>
+                    </select>
                 
+                <select name = "parkingLot"
+                value={formData.parkingLot}
+                onChange={handleChange}
+                >
+
+                    <option value= "">Parking Available?</option>
+                    <option value = "true">Yes</option>
+                    <option value = "false">No</option>
+                    </select>
+
+                    <button type = "submit">Add</button>
+                    </form>
+
+                    <div>
+                        <h4>Restaurants</h4>
+                        {restaurants.length === 0 && <p> No restaurants added</p>}
+                        {restaurants.map((r) => (
+                            <div key={r.restaurantID}>
+                                <p><b>{r.restaurantName}</b></p>
+                                 <p>{r.address}</p>
+                                  <p>{r.type}</p>
+                                  <p>Parking : {r.parkingLot ? "Yes" : "No"}</p>
+                                  <hr/>
+                                  </div>
+                        ))}
+                    </div>
         </div>
-    )
-}
+        </div>
+    );
+};
+export default AdminDashboard;
